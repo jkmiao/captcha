@@ -1,0 +1,19 @@
+Using TensorFlow backend.
+/home/jkmiao/workspace/python27/local/lib/python2.7/site-packages/keras/models.py:248: UserWarning: No training configuration found in save file: the model was *not* compiled. Compile it manually.
+  warnings.warn('No training configuration found in save file: '
+starting tornado at port http://127.0.0.1:8088
+Traceback (most recent call last):
+  File "web_server.py", line 108, in <module>
+    tornado.ioloop.IOLoop.instance().start()
+  File "/home/jkmiao/workspace/python27/local/lib/python2.7/site-packages/tornado/ioloop.py", line 862, in start
+    event_pairs = self._impl.poll(poll_timeout)
+KeyboardInterrupt
+Using TensorFlow backend.
+/home/jkmiao/workspace/python27/local/lib/python2.7/site-packages/keras/models.py:248: UserWarning: No training configuration found in save file: the model was *not* compiled. Compile it manually.
+  warnings.warn('No training configuration found in save file: '
+[I 170531 15:25:37 web:1971] 200 GET /vcode (127.0.0.1) 7.20ms
+[I 170531 15:30:16 web:1971] 200 GET / (192.168.0.170) 1.34ms
+[W 170531 15:30:16 web:1971] 404 GET /head.ico (192.168.0.170) 1.41ms
+[I 170531 15:30:16 web:1971] 200 POST /vcode (192.168.0.170) 2.08ms
+[I 170531 15:30:26 web:1971] 200 POST /vcode (192.168.0.170) 145.75ms
+[I 170531 15:30:26 web:1971] 200 GET /static/uploads/tgg_1.png (192.168.0.170) 3.29ms

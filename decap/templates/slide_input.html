@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8" >
+        <title>验证码解析-demo</title>
+        <link rel = "stylesheet" href="http://cdn.amazeui.org/amazeui/2.4.0/css/amazeui.min.css">
+        <link rel = "icon" href="head.ico" >
+
+        <script>
+            function get_result(){
+                document.getElementById("res_hint").innerHTML='<div class="am-form-label am-active">'+'正在生成结果，请稍等...'+'</div>';
+                return true
+            }
+        </script>
+    </head>
+    <body>
+        <div class="am-topbar">
+            <h1 class="am-active">滑动验证码识别在线演示</h1>
+        </div>
+        <div class="am-g">
+            <div class="am-u-sm-10 am-u-sm-centered">
+                <div class="am-intro-left am-active" style="height:210px">
+                    <label ><em>使用说明</em></label>
+                    <p>输入验证码三个图片的url，及 左上角坐标</p>
+                    <p><a href="http://gitlab.tangees.com/miaoweihong/verify-code">详细使用说明</a></p>
+                </div>
+
+                <div class='am-u-sm10 am-u-sm-centered'>
+                    <form class="am-form" role="form" enctype="multipart/form-data" action="/slide" method="post">
+                        <div class="am-row">
+                            <label>验证码图片url:</label>
+                            <div class="am-input am-input-group-primary">
+                                <input class="am-form-field am-radius" type="url" name="origin_url" style="width:70%; size=70%" placeholder="input url here" autofocus="True" value="{{origin_url}}" ></input>
+                            </div>
+                        </div>
+                        <div class="am-row">
+                            <label>验证码阴影图片url:</label>
+                            <div class="am-input am-input-group-primary">
+                                <input class="am-form-field am-radius" type="url" name="shadow_url" style="width:70%; size=70%" value="{{shadow_url}}"></input>
+                            </div>
+                        </div>
+                        <div class="am-row">
+                            <label>验证码滑动方块图片url:</label>
+                            <div class="am-input am-input-group-primary">
+                                <input class="am-form-field am-radius" type="url" name="chunk_url" style="width:70%; size=70%" value="{{chunk_url}}"></input>
+                            </div>
+                        </div>
+                        <div class="am-row">
+                            <div class="am-input am-input-group-primary">
+                                <label>验证码滑动方块图片left:</label>
+                                <input class="am-form-field am-radius" type="int" name="left" style="width:30%" value="{{left}}"></input>
+                                <label>验证码滑动方块图片top:</label>
+                                <input class="am-form-field am-radius" type="int" name="top" style="width:30%" value="{{top}}"></input>
+                            </div>
+                        </div>
+
+                        <button type="submit" onclick="get_result()" class="am-btn am-btn-primary" value="提交">submit</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <hr />
+        <script type="text/javascript" src="http://cdn.amazeui.org/amazeui/2.4.0/js/amazeui.min.js"></script>
+    </body>
+</html>

@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8" >
+        <title>验证码解析-demo</title>
+        <link rel = "stylesheet" href="http://cdn.amazeui.org/amazeui/2.4.0/css/amazeui.min.css">
+        <link rel = "icon" href="head.ico" >
+
+        <script>
+            function get_result(){
+                document.getElementById("res_hint").innerHTML='<div class="am-form-label am-active">'+'正在生成结果，请稍等...'+'</div>';
+                return true
+            }
+        </script>
+    </head>
+    <body>
+        <div class="am-topbar">
+            <h1 class="am-active">验证码识别在线演示-{{type}}</h1>
+        </div>
+        <div class="am-g">
+            <div class="am-u-sm-10 am-u-sm-centered">
+                <div class="am-intro-left am-active" style="height:210px">
+                    <label ><em>使用说明</em></label>
+                    <p>选择相关验证码类型, 输入验证码图片url或者上传验证码</p>
+                </div>
+ <div class='am-u-sm10 am-u-sm-centered'>
+                    <form class="am-form" role="form" enctype="multipart/form-data" action="/vcode" method="post">
+			<div class="am-row">
+                        <div class="am-u-sm3">
+                            <label>验证码类型<span class='am-form-label am-active'>*</span></label>
+                            <select class="am-select" name="type" value="{{type}}">
+                                <option value='GNE' >通用英文数字GNE</option>
+                                <option value='CM' >计算题CM</option>
+                            </select>
+                        </div>
+
+                        <div class="am-u-sm3">
+                            <label>验证码长度</label>
+                            <select class="am-select" name='code_len' value="{{code_len}}">
+                                <option value="" selected>自动确定</option>
+                                <option value=4>4</option>
+                                <option value=5>5</option>
+                                <option value=6>6</option>
+                            </select>
+                        </div>
+
+                        <div class="am-u-sm6">
+                            <div class="am-radio">
+                                <label><input type="radio" name="detail" value=0 checked>基础解析</label> <br/>
+                                <label><input type="radio" name="detail" value=1 >最终解析</label>
+                            </div>
+                        </div>
+                       </div>
+
+                        <div class="am-row">
+                            <label>验证码图片url:</label>
+                            <div class="am-input am-input-group-primary">
+                                <input class="am-form-field am-radius" type="url" name="imgUrl" style="width:70%; size=70%" placeholder="input url here" autofocus="True" >
+                            </div>
+                        </div>
+                        <div class="am-row">
+                          或 <input type="file" name="imgfile" title="或上传验证码图片文件" /> <br />
+                            <p><a href='../static/uploads/test.zip'>样例代码图片</a></p>
+                            <div class="am-form-group">
+                                <button type="submit" onclick="get_result()" class="am-btn am-btn-primary" value="提交">submit</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <hr />
+        <div style="clear:both"></div>
+        <div class="am-g">
+            <div class="am-u-sm-10 am-u-sm-centered">
+                <div class="am-u-sm-5">
+                    <div class="am-danger" id='res_hint' style="color:#c60a00">原code内容<br/></div>
+                    <div style="z-index:-1; overflow:hidden">
+                        <img src="{{source}}" /></div>
+                </div>
+
+                <div class="am-u-sm-5">
+                    <div class="am-danger" style="color:#c60a00">解析结果<br/></div>
+                    <div style="z-index:9999">
+                        <pre title="解析结果">{{result}}</pre>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <script type="text/javascript" src="http://cdn.amazeui.org/amazeui/2.4.0/js/amazeui.min.js"></script>
+    </body>
+</html>
