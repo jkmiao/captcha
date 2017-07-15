@@ -4,6 +4,7 @@
 import os
 from models.chimath.cm_code import CMCode
 from models.tggvcr.tggvcr import TGGVCR
+from models.tgcodesp.tgcodesp import TGcodesp
 import base64
 from cStringIO import StringIO
 from urllib import urlopen
@@ -18,6 +19,7 @@ class Apicode(object):
         self.models = {}
         self.models['GNE'] = TGGVCR()  # 中英文通用模型
         self.models['CM'] = CMCode()  # 数学计算题验证码， 类似工商吉林山东或17小说网 http://passport.17k.com/mcode.jpg?r=8417905093765
+        self.models['gne'] = TGcodesp('gne')
 
 
     def predict(self, codetype, fname, code_len=None, detail=False):
@@ -48,7 +50,7 @@ class Apicode(object):
 if __name__ == '__main__':
 
     test = Apicode()
-    ctype = 'CM'
+    ctype = 'gne'
     path = 'img/test/%s/' % ctype.lower()
     fnames = [os.path.join(path, fname) for fname in os.listdir(path)][:10]
     for fname in fnames:
