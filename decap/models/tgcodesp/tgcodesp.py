@@ -52,21 +52,34 @@ class TGcodesp(object):
        y_pred = self.ctable.decode(y_pred, code_len)
        if detail:
            try:
-               y_pred = eval(y_pred)
-           except:
+               y_pred = self.convert_res(y_pred)
+           except :
                y_pred = y_pred
        return str(y_pred)
 
 
+    def convert_res(self, label):
+        """
+        对计算题类型最终结果进行转化
+        """
+        op_map = {'a':'+', 'b': '-', 'c': '*', 'd':'/'}
+        res = ''
+        for s in label:
+            if s in op_map:
+               s = op_map[s]
+            res += s
+        return eval(res)
+
+
 if __name__ == '__main__':
     
-     test = TGcodesp('sp001')
-     path = 'img/test/qq168/'
+     test = TGcodesp('sogou')
+     path = 'img/test/sogou/'
      fnames = [os.path.join(path, fname) for fname in os.listdir(path)]
      cnt = 0
      for fname in fnames:
          y_true = fname.split('/')[-1].split('_')[0].lower()
-         y_pred = test.predict(fname)
+         y_pred = test.predict(fname, detail=True)
          print y_true, y_pred
          if y_true == y_pred:
             cnt += 1

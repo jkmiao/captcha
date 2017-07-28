@@ -37,6 +37,7 @@ class CharacterTable(object):
         """
         ctc结果解码为最终结果
         """
+        y_pred = y_pred[:, 2:, :]
         res = [self.indice_char[i] for i in np.argmax(y_pred[0], axis=1)]
         y_out = str(res[0])
         for i, c in enumerate(res):
